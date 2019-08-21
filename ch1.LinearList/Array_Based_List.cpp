@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
-#define ARRAYSIZE 10
+#define ARRAYSIZE 7//why 8 is wrong
 struct List
 {
     int a[ARRAYSIZE];
-    int Length; 
+    int Length;
 };
 int get(List *L,int Position,int *e);
 int find(List *L,int e);
@@ -13,26 +13,33 @@ int insertEle(List *L,int Position,int e);
 void showList(List *L);
 int main(){
     List *L;
-    for (int i=0;i<10;i++)
+    //List *L=(List*)malloc(sizeof(List));
+    for (int i=0;i<3;i++)
     {
         L->a[i]=i*2;
         L->Length=i+1;
+    }
+    for (int ii=0;ii<10;ii++)
+    {
+        cout<<ii<<endl;
     }
     showList(L);
     int a;
     get(L,3,&a);
     cout<<"find 3th, a="<<a<<endl;
     cout<<"find ele=4, position="<<find(L,4)<<endl;
-    deleteEle(L,5,&a);
+    deleteEle(L,2,&a);
     cout<<"delete 5th, a="<<a<<endl;
     showList(L);
-    insertEle(L,6,80);
+    insertEle(L,3,80);
     showList(L);
 }
 void showList(List *L)
 {
     for (int i=0;i<L->Length;i++)
-        cout<<L->a[i]<<endl;
+    { cout<<L->a[i]<<endl;}
+    return;
+
 }
 int get(List *L,int Position,int *e)
 {
